@@ -1,0 +1,21 @@
+.compl_sum{
+color: orange;
+position: relative;
+left: 8.5rem;
+top: 5.65rem;
+}
+
+.total_sum{
+    color: green;
+    position: relative;
+    bottom: 7rem;
+    left: 9rem;
+}
+
+.sum_svg::before{
+    content: "<--";
+    right: 15px;
+    position: relative;
+
+}
+

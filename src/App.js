@@ -1,28 +1,114 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainComp from './comps/MainComps/MainComp'
+import ResponseForm from './comps/MainComps/ResponseForm'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Navbar from './comps/NavBar/Navbar'
+import calculateTotal from './calcFunctions/require_calc'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+ constructor(props){
+   super();
+   this.state = {
+     value:{noi:0,amortization:0,square:0,rate:11},
+     switch:false,
+     checked:false,
+     total:360,
+     compl_total:450,
+     delta:90,
+     balloon:30,
+     compl_balloon:50,
+     first_class:false,
+     bonus_rate:3.5,
+     index:0
+    }
+ }
+ //Обработчики Input's(Switch,Input,Toggle,Range,Checkbox)
+ handleSwitcherChange = e => {
+  this.setState({ switch:e.target.checked});
+};
+ handleInputCheckBox = (e) =>{
+   this.setState({checked:e.target.checked}, this.checkFirstClass)
+ }
+
+ getCalc=()=>{
+ const result = calculateTotal(this.state);
+this.setState({result})
+ }
+ handleInputChange = (e) =>{
+const name = e.target.name
+  this.setState({[e.target.name] : e.target.value},()=>{
+   if (name==="nalog_rate")
+   this.getCalc()
+  })
+}
+
+ handleRangeChange = name=> (event,value) =>{
+  this.setState(prevState => ({
+    value: {
+        ...prevState.value,
+        [name]: value
+    }
+}),this.checkFirstClass)}
+
+componentDidMount(){
+
+  if (JSON.parse(localStorage.getItem('isAdmin')))
+  this.setState({isAdmin:true})
+  else
+  this.setState({isAdmin:false})
+}
+
+getAuthorize=()=>{
+  if (JSON.parse(localStorage.getItem('isAdmin')))
+  this.setState({isAdmin:true})
+  else
+  this.setState({isAdmin:false})
+}
+
+//Проверка на первоклассность (Для Складского доп условие - площадь обьекта(square)>50 тыс. кв. м.)
+checkFirstClass = ()=>{
+
+if (this.state.build_type==="Складской"){
+  if((this.state.value.square>50)&&(this.state.checked))
+  this.setState({first_class:true},this.getCalc)
+  else(this.setState({first_class:false},this.getCalc))
+}
+else if(this.state.checked){
+  this.setState({first_class:true},this.getCalc)
+}
+else this.setState({first_class:false},this.getCalc)
+
+
+
+}
+
+ render() {
+
+  return <>
+  <Navbar getAuthorize={this.getAuthorize} isAdmin={this.state.isAdmin}/>
+  <Container>
+    
+    <Row>
+  <Col md={5} className="bordered">
+  <MainComp
+   state={this.state}
+   handleRangeChange={this.handleRangeChange} 
+   getCalc={this.getCalc}
+   handleInputChange={this.handleInputChange}
+   handleInputCheckBox={this.handleInputCheckBox} 
+  
+   />
+  </Col>
+  <Col>
+  {this.state.result&&<ResponseForm state={this.state}  handleSwitcherChange={this.handleSwitcherChange} />}
+  </Col>
+  </Row>
+  </Container>
+  </>
+}
 }
 
 export default App;

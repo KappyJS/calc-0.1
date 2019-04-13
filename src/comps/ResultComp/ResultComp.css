@@ -1,0 +1,12 @@
+.material-icons{
+position: relative;
+top: 0.4rem;
+}
+
+li{
+    list-style-type:none;
+}
+
+ul{
+    padding: 0;
+}
