@@ -48,11 +48,7 @@ return<>
 export default ResultComp
 
 function getSpaceNumber(num){
-const strNum = num.toString().length;
-if(strNum>3){
-return (Math.floor(num/1000)).toString() + " " + (num%1000).toString()
-}
-else 
-return num
+ 
+  return  num.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
 
 }

@@ -9,7 +9,7 @@ import Navbar from './comps/NavBar/Navbar'
 import calculateTotal from './calcFunctions/require_calc'
 
 class App extends Component {
- constructor(props){
+ constructor(){
    super();
    this.state = {
      value:{noi:0,amortization:0,square:0,rate:11},
