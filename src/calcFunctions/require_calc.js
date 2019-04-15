@@ -116,8 +116,6 @@ const rate = value.rate/100;
     x = x.total;
      z = z.total;
         const y = z-x;
-      
-        console.log(((x*rate)+y*(rate+bonus_rate))/z)
         return (((x*rate)+y*(rate+bonus_rate))/z)
          }
         

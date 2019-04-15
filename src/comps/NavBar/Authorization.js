@@ -49,7 +49,6 @@ export default class Authorization extends React.Component {
       }
   
     render() {
-        console.log(this.props.isAdmin)
       return (
         <>
     

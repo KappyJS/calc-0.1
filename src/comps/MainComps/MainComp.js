@@ -18,7 +18,7 @@ constructor(props){
        {state.isAdmin&& <h4>Кредитный калькулятор(Администратор)</h4>}
         <Inputs state={state} handleInputChange={handleInputChange}/>
        
-        <RangeInputs   state={state} getCalc={getCalc} handleRangeChange={handleRangeChange}/>
+        <RangeInputs    state={state} getCalc={getCalc} handleRangeChange={handleRangeChange}/>
         <CheckBoxes state={state} handleInputCheckBox={handleInputCheckBox}/>
       </div>
     )

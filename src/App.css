@@ -10,6 +10,10 @@ svg{
   fill:green;
 }
 
+.form-check-label{
+  margin-left: 1rem;
+}
+
 
 .padding-2{
   padding: 1rem;
@@ -19,3 +23,34 @@ svg{
   border-color: #80a574;
 }
 
+.shadow-h{
+  background-color: #548c5d;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+
+.form-group{
+  overflow-x: hidden;
+}
+
+@media (max-width: 576px) { 
+   html{
+     font-size: 12px;
+     touch-action: none;
+   }
+
+
+
+.result-text{
+   font-size: 11rem;
+}
+
+.row{
+   margin-bottom: 1rem;
+}
+
+
+}

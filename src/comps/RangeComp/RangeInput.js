@@ -6,7 +6,14 @@ import { withStyles } from '@material-ui/core/styles';
 
 const Slidern = withStyles({
   track:{background:"#28a745"},
-  thumb:{background:"#28a745"}
+  thumb:{
+    background:"#28a745",
+    width:"14px",
+    height:"14px"},
+ root:{
+    width:"90%",
+    height:"1.7rem",
+    paddingLeft:"1.7rem"}
 })(Slider);
 
 const RangeInput =(props)=>{
@@ -18,7 +25,7 @@ const RangeInput =(props)=>{
         {!props.disabled&&<Form.Group>
         <Form.Label className="text-center">{label+" : "+(Math.round(value*10)/10) +" "+ unit}</Form.Label>
       
-        <Slidern onDragEnd={getCalc} max={max} step={step} value={value} min={min} onChange={handleRangeChange(value_name)}/>
+        <Slidern onClick={getCalc} onDragEnd={getCalc} max={max} step={step} value={value} min={min} onChange={handleRangeChange(value_name)}/>
       
       </Form.Group>}
       <></>

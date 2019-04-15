@@ -10,3 +10,17 @@ li{
 ul{
     padding: 0;
 }
+
+.sum::after{
+   content:  "\20BD";
+   margin-left: 5px;
+}
+
+
+.result-text{
+    font-size: 1.6rem;
+}
+
+.row{
+    margin-bottom: 1.5rem;
+}

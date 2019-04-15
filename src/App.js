@@ -22,7 +22,8 @@ class App extends Component {
      compl_balloon:50,
      first_class:false,
      bonus_rate:3.5,
-     index:0
+     index:0,
+     isHidden: true
     }
  }
  //Обработчики Input's(Switch,Input,Toggle,Range,Checkbox)
@@ -40,7 +41,7 @@ this.setState({result})
  handleInputChange = (e) =>{
 const name = e.target.name
   this.setState({[e.target.name] : e.target.value},()=>{
-   if (name==="nalog_rate")
+   if (name==="nalog_rate"||name==="build_type")
    this.getCalc()
   })
 }
@@ -51,14 +52,12 @@ const name = e.target.name
         ...prevState.value,
         [name]: value
     }
-}),this.checkFirstClass)}
+}))}
+
+
 
 componentDidMount(){
-
-  if (JSON.parse(localStorage.getItem('isAdmin')))
-  this.setState({isAdmin:true})
-  else
-  this.setState({isAdmin:false})
+ this.getAuthorize();
 }
 
 getAuthorize=()=>{
@@ -87,6 +86,13 @@ else this.setState({first_class:false},this.getCalc)
 
  render() {
 
+let ResponseFormRequire = <div className="d-flex align-items-center"><h1 className="shadow-h">Начните заполнять форму</h1></div>;
+if (   this.state.result)
+if (   this.state.result[0])
+if (   this.state.result[0].total)
+
+ResponseFormRequire = <ResponseForm state={this.state}  handleSwitcherChange={this.handleSwitcherChange} />
+
   return <>
   <Navbar getAuthorize={this.getAuthorize} isAdmin={this.state.isAdmin}/>
   <Container>
@@ -99,11 +105,10 @@ else this.setState({first_class:false},this.getCalc)
    getCalc={this.getCalc}
    handleInputChange={this.handleInputChange}
    handleInputCheckBox={this.handleInputCheckBox} 
-  
    />
   </Col>
-  <Col>
-  {this.state.result&&<ResponseForm state={this.state}  handleSwitcherChange={this.handleSwitcherChange} />}
+  <Col className="d-flex  justify-content-center">
+    {ResponseFormRequire}
   </Col>
   </Row>
   </Container>
