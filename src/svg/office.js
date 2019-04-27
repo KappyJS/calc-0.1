@@ -15,7 +15,20 @@ return<>
     
     
 <svg height="200px" style={{background:"new 0 0 512 512"}} version="1.1" viewBox="0 0 512 512" width="256px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-<g id="A_-_168_x2C__building_x2C__office_x2C__tower_x2C__space"><g>
+
+  <defs>
+    <linearGradient id="left-to-right"  x2="0%"  y1="100%" y2="0%" >
+      <stop offset="0" stop-color="#4DAF4C">
+        <animate dur="0.5s" attributeName="offset" fill="freeze" from="0" to="1" />
+      </stop>
+      <stop offset="0" stop-color="rgb(214, 230, 214)">
+        <animate dur="0.5s" attributeName="offset" fill="freeze" from="0" to="1" />
+      </stop>
+      
+    </linearGradient>
+  </defs>
+
+<g fill="url(#left-to-right)" id="A_-_168_x2C__building_x2C__office_x2C__tower_x2C__space"><g>
     <rect height="30.456" width="26.75" x="158.424" y="309.462"/>
 <rect height="30.541" width="26.75" x="158.424" y="346.478"/>
 <rect height="30.456" width="26.667" x="191.733" y="198.326"/>

@@ -117,3 +117,10 @@ ResponseFormRequire = <ResponseForm state={this.state}  handleSwitcherChange={th
 }
 
 export default App;
+
+
+
+///Стадии - действующие , строющиеся
+//Сегмент недвижимости - жилая, торговая, офисная, складская, гостиничная , автосалоны 
+// Доп счета еще один селектор. 
+
